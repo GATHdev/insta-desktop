@@ -1,0 +1,19 @@
+{
+  "name": "insta-desktop",
+  "version": "1.0.0",
+  "description": "electron instagram desktop clinet  hi",
+  "main": "main.js",
+  "scripts": {
+      "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GATHdev/insta-desktop.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GATHdev/insta-desktop/issues"
+  },
+  "homepage": "https://github.com/GATHdev/insta-desktop#readme"
+}
