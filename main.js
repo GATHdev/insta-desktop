@@ -8,9 +8,9 @@ function createWindow () {
     width:360,
     height: 640,
     frame: true,
-    backgroundColor: '#2e2c29',
-    autoHideMenuBar: 'true',
-
+    backgroundColor: '#FFFFF',
+    autoHideMenuBar: true,
+    fullscreenable: false,
     //webview: true,
   })
 
@@ -25,36 +25,16 @@ function createWindow () {
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
 
-  const win = new BrowserWindow({
-    width: 360,
-    height: 32,
-    frame: false,
-    resizable: true,
-    movable: false,
-    skipTaskbar: true,
-    parent: mainWindow,
-    webPreferences: {
-      preload: path.join(__dirname, 'preload.js')
-    }
-  })
-  win.loadFile('menu.html')
-
-  mainWindow.on('move', function() {
-  let position = mainWindow.getPosition();
-  win.setPosition(position[0], position[1]+640);
-});
-
 }
 
 const { shell } = require('electron')
 
 app.on('web-contents-created', (event, contents) => {
-  contents.on('new-window', async (event, url) => {
+  contents.on('new-window', async (event, navigationUrl) => {
     // In this example, we'll ask the operating system
     // to open this event's url in the default browser.
-    //event.preventDefault()
-    console.log(url);
-    //await shell.openExternal(navigationUrl)
+    event.preventDefault()
+    await shell.openExternal(navigationUrl)
   })
 })
 
@@ -82,4 +62,22 @@ app.on('activate', () => {
 })
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
-//event listeners
+// #####################lol some code########################
+//   const win = new BrowserWindow({
+//     width: 360,
+//     height: 32,
+//     frame: false,
+//     resizable: true,
+//     movable: false,
+//     skipTaskbar: true,
+//     parent: mainWindow,
+//     webPreferences: {
+//       preload: path.join(__dirname, 'preload.js')
+//     }
+//   })
+//   win.loadFile('menu.html')
+//
+//   mainWindow.on('move', function() {
+//   let position = mainWindow.getPosition();
+//   win.setPosition(position[0], position[1]+640);
+// });
